@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class CheckPro
 {
@@ -16,11 +17,14 @@ class CheckPro
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->type == 'Pro'){
+        if(Auth::user()->type == 'Pro'){
             return $next($request);
         }
-        else{
-            return redirect()->back()->with('error','Only pro users are allowed to perform this action');
+        else if(Auth::user()->type == 'Admin'){
+            return redirect()->route('admin.home')->with('error','You are not allowed to perform this action');
+        }
+        else if(Auth::user()->type == 'User'){
+            return redirect()->route('user.home')->with('error','You are not allowed to perform this action');
         }
     }
 }
