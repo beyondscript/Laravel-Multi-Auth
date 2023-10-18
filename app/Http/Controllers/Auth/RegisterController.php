@@ -179,6 +179,8 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
+        $user->sendEmailVerificationNotification();
+
         if(Auth::user()->type == 'Admin'){
             return redirect()->route('admin.home');
         }
