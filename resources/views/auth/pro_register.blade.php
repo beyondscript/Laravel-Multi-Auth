@@ -108,14 +108,14 @@
     var windowWidth = window.innerWidth
     var url = "@php echo config('app.url'); @endphp"
     if(windowWidth <= widthLimit) {
-      document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signin.webp)"
+      document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signup.webp)"
       document.getElementById('page_header').style.backgroundSize = "cover"
       document.getElementById('page_header').style.backgroundPosition = "center"
     }
     window.addEventListener('resize', function () {
       var currentWidth = window.innerWidth
       if (currentWidth <= widthLimit) {
-        document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signin.webp)"
+        document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signup.webp)"
         document.getElementById('page_header').style.backgroundSize = "cover"
         document.getElementById('page_header').style.backgroundPosition = "center"
       }
