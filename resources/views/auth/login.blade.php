@@ -68,7 +68,7 @@
                     @enderror
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
-                    <input class="form-check-input" type="checkbox" id="showpass" onclick="showPasswordSignIn()">
+                    <input class="form-check-input" type="checkbox" id="showpass" onclick="showPassword()">
                     <label class="form-check-label mb-0 ms-3" style="padding-top: 5px;" for="showpass">Show Password</label>
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
@@ -96,4 +96,17 @@
       </div>
     </div>
   </main>
+@endsection
+
+@section('scripts')
+  <script>
+    function showPassword() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
 @endsection

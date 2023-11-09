@@ -44,62 +44,17 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
-  @vite('public/assets/js/dropify.js')
+
+  @yield('scripts')
 
   <script>
-    function showPasswordSignIn() {
-      var x = document.getElementById("password");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }
-    function showPasswordSignUp() {
-      var x = document.getElementById("password");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-      var y = document.getElementById("password-confirm");
-      if (y.type === "password") {
-        y.type = "text";
-      } else {
-        y.type = "password";
-      }
+    var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+    if(!isWindows){
+      document.getElementsByTagName('main')[0].style.overflow = 'auto'
+      document.getElementById('sidenav-main').style.overflow = 'auto'
     }
   </script>
-  <script>
-    function showPasswordChangeEmail() {
-      var x = document.getElementById("current_password");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }
-    function showPasswordChangePassword() {
-      var x = document.getElementById("current_password");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-      var y = document.getElementById("password");
-      if (y.type === "password") {
-        y.type = "text";
-      } else {
-        y.type = "password";
-      }
-      var z = document.getElementById("password-confirm");
-      if (z.type === "password") {
-        z.type = "text";
-      } else {
-        z.type = "password";
-      }
-    }
-  </script>
+
   <script>
     @if(Session::has('message'))
       toastr.options =

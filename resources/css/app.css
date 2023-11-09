@@ -1,3 +1,9 @@
+html,
+main,
+#sidenav-main {
+  overflow: hidden;
+}
+
 .link,
 .link-2{
   color: #2E4AFF;
@@ -6,6 +12,12 @@
 .link:hover,
 .link-2:hover{
   color: #2E4AFF;
+}
+
+#navbar_main {
+  position: fixed !important;
+  width: -webkit-fill-available;
+  width: -moz-available;
 }
 
 .profile_picture{
@@ -17,6 +29,12 @@
   border-radius: 64px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.profile_settings_div{
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
 }
 
 .ps .ps__rail-y {
@@ -38,8 +56,15 @@
   top: -.7em !important;
 }
 
+@media only screen and (max-width: 392px) {
+  .profile_settings_div{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media only screen and (max-width: 320px) {
-    #toast-container > .toast {
-        width: 258px;
-    }
+  #toast-container > .toast {
+    width: 258px;
+  }
 }

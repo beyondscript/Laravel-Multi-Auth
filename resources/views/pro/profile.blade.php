@@ -7,7 +7,7 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
-          <div class="card my-4">
+          <div class="card my-4" style="margin-top: 99px !important;">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3" style="text-align: center; padding-left: 0 !important;">Profile</h6>
@@ -18,10 +18,10 @@
                 <img class="profile_picture" src="{{ asset(Auth::user()->image) }}" alt="Profile Picture">
                 <span style="display: block; color: #DE2768; font-size: 18px; font-weight: 500; text-align: center; margin-top: 5px;">{{ auth()->user()->name }}</span>
                 <span style="display: block; color: #DE2768; font-size: 14px; font-weight: 400; text-align: center;">Email: {{ auth()->user()->email }}</span>
-                <div style="text-align: center; margin-top: 1.4rem;">
-                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 150px; height: 52px; padding-top: 14px; margin: 5px !important;" href="{{route('pro.edit.email')}}">Change Email</a>
-                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 150px; height: 52px; padding-top: 14px; margin: 5px !important;" href="{{route('pro.edit.password')}}">Change Password</a>
-                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 150px; height: 52px; margin: 5px !important;" href="{{route('pro.edit.picture')}}">Change Profile Picture</a>
+                <div class="profile_settings_div">
+                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="display: flex; justify-content: center; align-items: center; width: 165px; height: 52px; margin: 5px !important; padding: 5px;" href="{{route('pro.edit.email')}}">Change Email</a>
+                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="display: flex; justify-content: center; align-items: center; width: 165px; height: 52px; margin: 5px !important; padding: 5px;" href="{{route('pro.edit.password')}}">Change Password</a>
+                  <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="display: flex; justify-content: center; align-items: center; width: 165px; height: 52px; margin: 5px !important; padding: 5px;" href="{{route('pro.edit.picture')}}">Change Profile Picture</a>
                 </div>
               </div>
             </div>
@@ -38,19 +38,16 @@
                       <li class="nav-item">
                         <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="/pro-profile/facebook-tab" role="tab" aria-selected="true" data-bs-target="#facebook">
                           <i class="fa fa-facebook-f"></i>
-                          <span class="ms-1">Facebook</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="/pro-profile/github-tab" role="tab" aria-selected="false" data-bs-target="#github">
                           <i class="fa fa-github"></i>
-                          <span class="ms-1">GitHub</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="/pro-profile/google-tab" role="tab" aria-selected="false" data-bs-target="#google">
                           <i class="fa fa-google"></i>
-                          <span class="ms-1">Google</span>
                         </a>
                       </li>
                     </ul>

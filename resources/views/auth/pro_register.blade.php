@@ -3,7 +3,7 @@
 <body>
   <main class="main-content position-relative max-height-vh-100  mt-0">
     <section>
-      <div class="page-header min-vh-100">
+      <div id="page_header" class="page-header min-vh-100">
         <div class="container">
           <div class="row">
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
@@ -15,10 +15,11 @@
                 <img src="{{ asset('assets/img/logo-ct.webp') }}" style="display: inline; width: 32px; height: 32px; margin-right: 2.5px;">
                 <span style="display: inline; text-transform: uppercase; font-weight: 600; font-size: 1rem; margin-left: 2.5px;">{{config('app.name')}}</span>
               </a>
-              <div class="card card-plain" style="box-shadow: 0 0 20px 2px rgb(0 0 0 / 10%); margin-bottom: 16px;">
-                <div class="card-header">
-                  <h4 class="font-weight-bolder">PRO USER SIGN UP</h4>
-                  <p class="mb-0">Fill up the below form to register</p>
+              <div class="card card-plain" style="background-color: white; box-shadow: 0 0 20px 2px rgb(0 0 0 / 10%); margin-top: 25px; margin-bottom: 16px;">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                    <h4 class="text-white font-weight-bolder text-center mt-2 mb-0" style="margin-top: 0 !important;">PRO USER SIGN UP</h4>
+                  </div>
                 </div>
                 <div class="card-body">
                   <form role="form" method="post" action="{{ route('custom_register') }}" enctype="multipart/form-data">
@@ -74,7 +75,7 @@
                       <input id="password-confirm" name="password_confirmation" type="password" class="form-control">
                     </div>
                     <div class="form-check form-switch d-flex align-items-center mb-3">
-                      <input class="form-check-input" type="checkbox" id="showpass" onclick="showPasswordSignUp()">
+                      <input class="form-check-input" type="checkbox" id="showpass" onclick="showPassword()">
                       <label class="form-check-label mb-0 ms-3" style="padding-top: 5px;" for="showpass">Show Password</label>
                     </div>
                     <div class="text-center">
@@ -99,4 +100,57 @@
       </div>
     </section>
   </main>
+@endsection
+
+@section('scripts')
+  <script>
+    var widthLimit = 991
+    var windowWidth = window.innerWidth
+    var url = "@php echo config('app.url'); @endphp"
+    if(windowWidth <= widthLimit) {
+      document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signin.webp)"
+      document.getElementById('page_header').style.backgroundSize = "cover"
+      document.getElementById('page_header').style.backgroundPosition = "center"
+    }
+    window.addEventListener('resize', function () {
+      var currentWidth = window.innerWidth
+      if (currentWidth <= widthLimit) {
+        document.getElementById('page_header').style.backgroundImage = "url(" + url + "/assets/img/illustrations/signin.webp)"
+        document.getElementById('page_header').style.backgroundSize = "cover"
+        document.getElementById('page_header').style.backgroundPosition = "center"
+      }
+      else {
+        document.getElementById('page_header').removeAttribute('style')
+      }
+    })
+  </script>
+
+  <script>
+    $('.dropify').dropify({
+      tpl: {
+        wrap: '<div id="dropify-wrapper" class="dropify-wrapper"></div>'
+      }
+    });
+
+    if('ontouchstart' in window) {
+      document.getElementById('dropify-wrapper').classList.remove('touch-fallback')
+    }
+  </script>
+
+  <script>
+    function showPassword() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+      var y = document.getElementById("password-confirm");
+      if (y.type === "password") {
+        y.type = "text";
+      } else {
+        y.type = "password";
+      }
+    }
+  </script>
 @endsection
