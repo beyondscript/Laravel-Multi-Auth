@@ -4,7 +4,7 @@
 	Laravel Multi Auth
 </p>
 
-## About Laravel Multi Auth
+## About Laravel Multi Auth r
 
 Laravel Multi Auth is a web application which was designed by using HTML, CSS and JavaScript and developed by using PHP and Laravel framework.
 
