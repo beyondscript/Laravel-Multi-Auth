@@ -1,0 +1,69 @@
+html,
+#sidenav-main {
+  overflow: hidden;
+}
+
+.link,
+.link-2{
+  color: #2E4AFF;
+}
+
+.link:hover,
+.link-2:hover{
+  color: #2E4AFF;
+}
+
+#navbar_main {
+  position: fixed !important;
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+
+.profile_picture{
+  display: block;
+  width: 128px;
+  height: 128px;
+  line-height: 128px;
+  border: 1px solid #DE2B6B;
+  border-radius: 64px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile_settings_div{
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
+.ps .ps__rail-y {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#toast-container .toast.toast-success,
+#toast-container .toast.toast-error,
+#toast-container .toast.toast-info,
+#toast-container .toast.toast-warning
+{
+  background-image: none !important;
+  padding: 15px 15px 15px 7px !important;
+}
+
+#toast-container .toast-close-button{
+  top: -.7em !important;
+}
+
+@media only screen and (max-width: 392px) {
+  .profile_settings_div{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #toast-container > .toast {
+    width: 258px;
+  }
+}
