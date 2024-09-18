@@ -9,6 +9,7 @@ export default defineConfig({
                 'public/assets/css/nucleo-icons.css',
                 'public/assets/css/nucleo-svg.css',
                 'public/assets/css/material-dashboard.min.css',
+                'public/assets/css/dropify.min.css',
                 'public/assets/js/core/popper.min.js'
             ],
             refresh: true
