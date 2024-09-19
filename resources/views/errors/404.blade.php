@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<body>
   	<div style="display: flex; height: 100vh; justify-content: center; align-items: center; padding-left: 10px; padding-right: 10px;">
   		<div style="text-align: center;">
 			<img style="width: 260px;" src="{{ asset('images/404-not-found.webp') }}">

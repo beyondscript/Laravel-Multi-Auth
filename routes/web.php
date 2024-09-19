@@ -104,6 +104,6 @@ Route::middleware(['www', 'auth', 'verified'])->group(function () {
     Route::patch('/{type_profile}/remove-google', [SocialiteController::class, 'googleremove'])->name('google_remove');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['www', 'auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<body>
   <main class="main-content position-relative max-height-vh-100  mt-0">
     <section>
       <div id="page_header" class="page-header min-vh-100">
