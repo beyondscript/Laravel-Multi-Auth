@@ -132,11 +132,6 @@ class ProfileController extends Controller
         $user = User::findorfail(Auth::user()->id);
         $image = request()->file('image');
         if($image){
-            if($user->image != 'images/users/default.webp'){
-                if(file_exists($user->image)){
-                    unlink($user->image);
-                }
-            }
             $name = hexdec(uniqid());
             $fullname = $name.'.webp';
             $path = 'images/users/';
@@ -144,6 +139,11 @@ class ProfileController extends Controller
             $resize_image=Image::make($image->getRealPath());
             $resize_image->resize(500,500);
             $resize_image->save('images/users/'.$fullname);
+            if($user->image != 'images/users/default.webp'){
+                if(file_exists($user->image)){
+                    unlink($user->image);
+                }
+            }
             $user->image = $url;
             $user->save();
             if($user->type == 'Admin'){
