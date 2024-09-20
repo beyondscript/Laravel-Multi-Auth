@@ -129,7 +129,8 @@
     $('.dropify').dropify({
       tpl: {
         wrap: '<div id="dropify-wrapper" class="dropify-wrapper"></div>'
-      }
+      },
+      imgFileExtensions: ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp']
     });
 
     if('ontouchstart' in window) {
