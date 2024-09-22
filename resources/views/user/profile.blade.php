@@ -34,106 +34,103 @@
                 </div>
                 <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3" style="margin-bottom: 10px !important; margin-right: auto !important;">
                   <div class="nav-wrapper position-relative end-0">
-                    <ul class="nav nav-pills nav-fill p-1" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="/user-profile/facebook-tab" role="tab" aria-selected="true" data-bs-target="#facebook">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                      <div class="social_tabs">
+                        <a id="facebook_tab" href="/user-profile/show-facebook-tab" class="social_tabs_links" style="background-color: #ffffff; box-shadow: 0 1px 5px 1px #ddd;" onclick="switchFacebookTab(event)">
                           <i class="fa fa-facebook-f"></i>
                         </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="/user-profile/github-tab" role="tab" aria-selected="false" data-bs-target="#github">
+                      </div>
+                      <div class="social_tabs">
+                        <a id="github_tab" href="/user-profile/show-github-tab" class="social_tabs_links" style="background-color: #F8F9FA; box-shadow: none" onclick="switchGithubTab(event)">
                           <i class="fa fa-github"></i>
                         </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="/user-profile/google-tab" role="tab" aria-selected="false" data-bs-target="#google">
+                      </div>
+                      <div class="social_tabs">
+                        <a id="google_tab" href="/user-profile/show-google-tab" class="social_tabs_links" style="background-color: #F8F9FA; box-shadow: none;" onclick="switchGoogleTab(event)">
                           <i class="fa fa-google"></i>
                         </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="tab-content">
-                  @php
-                    $type = strtolower(auth()->user()->type);
-                    $type_profile = $type.'-profile';
-                  @endphp
-                  <div id="facebook" class="tab-pane active">
-                    <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
-                      <strong>Status: </strong>
-                      @if(Auth::user()->facebook_id)
-                        <strong>Connected</strong>
-                      @else
-                        <strong>Not connected</strong>
-                      @endif
+                      </div>
                     </div>
-                    <div style="text-align: center;">
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/connect-facebook-account" onclick="event.preventDefault(); document.getElementById('facebook-connect').submit();">
-                        Connect with Facebook
-                        <form id="facebook-connect" action="{{route('facebook_connect', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/remove-facebook-account" onclick="event.preventDefault(); document.getElementById('facebook-remove').submit();">
-                        Remove from Facebook
-                        <form id="facebook-remove" action="{{route('facebook_remove', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
+                    @php
+                      $type_profile = 'user-profile';
+                    @endphp
+                    <div id="facebook_tab_contents" style="display: block;">
+                      <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
+                        <strong>Status: </strong>
+                        @if(Auth::user()->facebook_id)
+                          <strong>Connected</strong>
+                        @else
+                          <strong>Not connected</strong>
+                        @endif
+                      </div>
+                      <div style="text-align: center;">
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('facebook-connect').submit();">
+                          Connect with Facebook
+                          <form id="facebook-connect" action="{{route('facebook_connect', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('facebook-remove').submit();">
+                          Remove from Facebook
+                          <form id="facebook-remove" action="{{route('facebook_remove', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div id="github" class="tab-pane">
-                    <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
-                      <strong>Status: </strong>
-                      @if(Auth::user()->github_id)
-                        <strong>Connected</strong>
-                      @else
-                        <strong>Not connected</strong>
-                      @endif
+                    <div id="github_tab_contents" style="display: none;">
+                      <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
+                        <strong>Status: </strong>
+                        @if(Auth::user()->github_id)
+                          <strong>Connected</strong>
+                        @else
+                          <strong>Not connected</strong>
+                        @endif
+                      </div>
+                      <div style="text-align: center;">
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('github-connect').submit();">
+                          Connect with GitHub
+                          <form id="github-connect" action="{{route('github_connect', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('github-remove').submit();">
+                          Remove from GitHub
+                          <form id="github-remove" action="{{route('github_remove', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                      </div>
                     </div>
-                    <div style="text-align: center;">
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/connect-github-account" onclick="event.preventDefault(); document.getElementById('github-connect').submit();">
-                        Connect with GitHub
-                        <form id="github-connect" action="{{route('github_connect', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/remove-github-account" onclick="event.preventDefault(); document.getElementById('github-remove').submit();">
-                        Remove from GitHub
-                        <form id="github-remove" action="{{route('github_remove', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
-                    </div>
-                  </div>
-                  <div id="google" class="tab-pane">
-                    <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
-                      <strong>Status: </strong>
-                      @if(Auth::user()->google_id)
-                        <strong>Connected</strong>
-                      @else
-                        <strong>Not connected</strong>
-                      @endif
-                    </div>
-                    <div style="text-align: center;">
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/connect-google-account" onclick="event.preventDefault(); document.getElementById('google-connect').submit();">
-                        Connect with Google
-                        <form id="google-connect" action="{{route('google_connect', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
-                      <a class="btn btn-outline-primary btn-sm mb-0 me-3" style="width: 200px; height: 52px; padding-top: 14px; margin: 5px !important;" href="/user-profile/remove-google-account" onclick="event.preventDefault(); document.getElementById('google-remove').submit();">
-                        Remove from Google
-                        <form id="google-remove" action="{{route('google_remove', $type_profile)}}" method="POST">
-                          @method('patch')
-                          @csrf
-                        </form>
-                      </a>
+                    <div id="google_tab_contents" style="display: none;">
+                      <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
+                        <strong>Status: </strong>
+                        @if(Auth::user()->google_id)
+                          <strong>Connected</strong>
+                        @else
+                          <strong>Not connected</strong>
+                        @endif
+                      </div>
+                      <div style="text-align: center;">
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('google-connect').submit();">
+                          Connect with Google
+                          <form id="google-connect" action="{{route('google_connect', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm mb-0 me-3" type="button" style="width: 200px; height: 52px; padding-top: 10px; margin: 5px !important;" onclick="document.getElementById('google-remove').submit();">
+                          Remove from Google
+                          <form id="google-remove" action="{{route('google_remove', $type_profile)}}" method="POST">
+                            @method('patch')
+                            @csrf
+                          </form>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -144,4 +141,56 @@
       </div>
     </div>
   </main>
+@endsection
+
+@section('scripts')
+  <script>
+    function switchFacebookTab() {
+      event.preventDefault(event)
+
+      document.getElementById('github_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('github_tab').style.boxShadow = 'none'
+      document.getElementById('github_tab_contents').style.display = 'none'
+
+      document.getElementById('google_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('google_tab').style.boxShadow = 'none'
+      document.getElementById('google_tab_contents').style.display = 'none'
+
+      document.getElementById('facebook_tab').style.backgroundColor = '#ffffff'
+      document.getElementById('facebook_tab').style.boxShadow = '0 1px 5px 1px #ddd'
+      document.getElementById('facebook_tab_contents').style.display = 'block'
+    }
+
+    function switchGithubTab(event) {
+      event.preventDefault()
+
+      document.getElementById('facebook_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('facebook_tab').style.boxShadow = 'none'
+      document.getElementById('facebook_tab_contents').style.display = 'none'
+
+      document.getElementById('google_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('google_tab').style.boxShadow = 'none'
+      document.getElementById('google_tab_contents').style.display = 'none'
+
+      document.getElementById('github_tab').style.backgroundColor = '#ffffff'
+      document.getElementById('github_tab').style.boxShadow = '0 1px 5px 1px #ddd'
+      document.getElementById('github_tab_contents').style.display = 'block'
+    }
+
+    function switchGoogleTab(event) {
+      event.preventDefault()
+
+      document.getElementById('facebook_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('facebook_tab').style.boxShadow = 'none'
+      document.getElementById('facebook_tab_contents').style.display = 'none'
+
+      document.getElementById('github_tab').style.backgroundColor = '#F8F9FA'
+      document.getElementById('github_tab').style.boxShadow = 'none'
+      document.getElementById('github_tab_contents').style.display = 'none'
+
+      document.getElementById('google_tab').style.backgroundColor = '#ffffff'
+      document.getElementById('google_tab').style.boxShadow = '0 1px 5px 1px #ddd'
+      document.getElementById('google_tab_contents').style.display = 'block'
+    }
+  </script>
 @endsection

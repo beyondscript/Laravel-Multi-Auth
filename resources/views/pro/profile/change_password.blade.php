@@ -16,8 +16,7 @@
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0" style="padding: 5px !important;">
                 @php
-                  $type = strtolower(auth()->user()->type);
-                  $type_profile = $type.'-profile';
+                  $type_profile = 'pro-profile';
                 @endphp
                 <form role="form" method="post" action="{{ route('update.password', $type_profile) }}">
                   @method('patch')

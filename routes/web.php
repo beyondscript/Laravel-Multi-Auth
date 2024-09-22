@@ -94,14 +94,14 @@ Route::middleware(['www', 'auth', 'verified'])->group(function () {
     Route::patch('/{type_profile}/update-password', [ProfileController::class, 'update_password'])->name('update.password');
     Route::patch('/{type_profile}/update-picture', [ProfileController::class, 'update_picture'])->name('update.picture');
 
-    Route::patch('/{type_profile}/connect-facebook', [SocialiteController::class, 'facebookredirect'])->name('facebook_connect');
-    Route::patch('/{type_profile}/remove-facebook', [SocialiteController::class, 'facebookremove'])->name('facebook_remove');
+    Route::patch('/{type_profile}/connect-facebook-account', [SocialiteController::class, 'facebookredirect'])->name('facebook_connect');
+    Route::patch('/{type_profile}/remove-facebook-account', [SocialiteController::class, 'facebookremove'])->name('facebook_remove');
     
-    Route::patch('/{type_profile}/connect-github', [SocialiteController::class, 'githubredirect'])->name('github_connect');
-    Route::patch('/{type_profile}/remove-github', [SocialiteController::class, 'githubremove'])->name('github_remove');
+    Route::patch('/{type_profile}/connect-github-account', [SocialiteController::class, 'githubredirect'])->name('github_connect');
+    Route::patch('/{type_profile}/remove-github-account', [SocialiteController::class, 'githubremove'])->name('github_remove');
 
-    Route::patch('/{type_profile}/connect-google', [SocialiteController::class, 'googleredirect'])->name('google_connect');
-    Route::patch('/{type_profile}/remove-google', [SocialiteController::class, 'googleremove'])->name('google_remove');
+    Route::patch('/{type_profile}/connect-google-account', [SocialiteController::class, 'googleredirect'])->name('google_connect');
+    Route::patch('/{type_profile}/remove-google-account', [SocialiteController::class, 'googleremove'])->name('google_remove');
 });
 
 Route::middleware(['www', 'auth'])->group(function () {

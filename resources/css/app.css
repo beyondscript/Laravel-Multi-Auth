@@ -36,6 +36,36 @@ html,
   margin-top: 1.4rem;
 }
 
+.social_tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F8F9FA;
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.social_tabs:last-child {
+  margin-right: 0;
+}
+
+.social_tabs_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 115px;
+  color: #344767;
+  border-radius: 5px;
+}
+
+.social_tabs_links:hover {
+  color: #344767;
+}
+
 .ps .ps__rail-y {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -55,10 +85,40 @@ html,
   top: -.7em !important;
 }
 
+@media only screen and (max-width: 411px) {
+  .social_tabs {
+    width: 105px;
+  }
+
+  .social_tabs_links {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 371px) {
+  .social_tabs {
+    width: 90px;
+  }
+
+  .social_tabs_links {
+    width: 85px;
+  }
+}
+
 @media only screen and (max-width: 392px) {
   .profile_settings_div{
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media only screen and (max-width: 331px) {
+  .social_tabs {
+    width: 75px;
+  }
+
+  .social_tabs_links {
+    width: 70px;
   }
 }
 
