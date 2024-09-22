@@ -8,22 +8,22 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="/logout" class="nav-link text-body font-weight-bold px-0" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <button class="nav-link text-body font-weight-bold px-0" style="background-color: transparent; border: none;" type="button" onclick="document.getElementById('logout-form').submit();">
                 <i class="fa fa-sign-out"></i>
                 <span class="d-sm-inline d-none">Log Out</span>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                   @csrf
                 </form>
-              </a>
+              </button>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+              <button class="nav-link text-body p-0" style="background-color: transparent; border: none;" type="button" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
                   <i class="sidenav-toggler-line"></i>
                   <i class="sidenav-toggler-line"></i>
                   <i class="sidenav-toggler-line"></i>
                 </div>
-              </a>
+              </button>
             </li>
           </ul>
         </div>
