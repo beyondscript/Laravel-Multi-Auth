@@ -124,6 +124,6 @@ html,
 
 @media only screen and (max-width: 320px) {
   #toast-container > .toast {
-    width: 258px;
+    width: 238px;
   }
 }
