@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -23,45 +21,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    public function login(Request $request){
-        $validatedData = $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
-
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        $credentials = array();
-        $credentials['email'] = $request->email;
-        $credentials['password'] = $request->password;
-        $credentials['remember'] = $request->remember;
-        $remember = $credentials['remember'] ?? false;
-        unset($credentials['remember']);
-        if (Auth::attempt($credentials, $remember)) {
-            if(Auth::user()->type == 'Admin'){
-                return redirect()->route('admin.home');
-            }
-            else if(Auth::user()->type == 'Pro'){
-                return redirect()->route('pro.home');
-            }
-            else if(Auth::user()->type == 'User'){
-                return redirect()->route('user.home');
-            }
-        }
-        else{
-            $this->incrementLoginAttempts($request);
-
-            throw ValidationException::withMessages([
-                'email' => [trans('auth.failed')],
-            ]);
-        }
-    }
 
     public function logout(Request $request){
         Auth::logoutCurrentDevice();

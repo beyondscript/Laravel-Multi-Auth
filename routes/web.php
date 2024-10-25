@@ -27,8 +27,6 @@ Route::middleware(['www'])->group(function () {
         return redirect(route('login'));
     })->name('welcome');
 
-    Route::post('/login', [LoginController::class, 'login'])->name('login');
-
     Route::get('/pro-register', [RegisterController::class, 'showProRegistrationForm'])->name('pro-register');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
