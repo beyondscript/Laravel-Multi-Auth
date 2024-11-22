@@ -136,6 +136,8 @@
     if('ontouchstart' in window) {
       document.getElementById('dropify-wrapper').classList.remove('touch-fallback')
     }
+
+    document.getElementById('image').setAttribute('title', '')
   </script>
 
   <script>
