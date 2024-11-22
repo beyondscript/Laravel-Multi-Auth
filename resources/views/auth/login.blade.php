@@ -16,8 +16,8 @@
                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                   <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">SIGN IN</h4>
                   <div class="row mt-3">
-                    <div class="col-2 text-center ms-auto">
-                      <a class="btn btn-link px-3" href="/login-with-facebook" onclick="event.preventDefault(); document.getElementById('facebook-login').submit();">
+                    <div class="col-2 text-center ms-auto" style="display: flex; justify-content: center;">
+                      <a class="btn btn-link px-3" style="display: flex; justify-content: center;" href="/login-with-facebook" onclick="event.preventDefault(); document.getElementById('facebook-login').submit();">
                         <i class="fa fa-facebook text-white text-lg"></i>
                         <form id="facebook-login" action="{{route('facebook_login')}}" method="POST">
                           @method('patch')
@@ -25,8 +25,8 @@
                         </form>
                       </a>
                     </div>
-                    <div class="col-2 text-center px-1">
-                      <a class="btn btn-link px-3" href="/login-with-github" onclick="event.preventDefault(); document.getElementById('github-login').submit();">
+                    <div class="col-2 text-center px-1" style="display: flex; justify-content: center;">
+                      <a class="btn btn-link px-3" style="display: flex; justify-content: center;" href="/login-with-github" onclick="event.preventDefault(); document.getElementById('github-login').submit();">
                         <i class="fa fa-github text-white text-lg"></i>
                         <form id="github-login" action="{{route('github_login')}}" method="POST">
                           @method('patch')
@@ -34,8 +34,8 @@
                         </form>
                       </a>
                     </div>
-                    <div class="col-2 text-center me-auto">
-                      <a class="btn btn-link px-3" href="/login-with-google" onclick="event.preventDefault(); document.getElementById('google-login').submit();">
+                    <div class="col-2 text-center me-auto" style="display: flex; justify-content: center;">
+                      <a class="btn btn-link px-3" style="display: flex; justify-content: center;" href="/login-with-google" onclick="event.preventDefault(); document.getElementById('google-login').submit();">
                         <i class="fa fa-google text-white text-lg"></i>
                         <form id="google-login" action="{{route('google_login')}}" method="POST">
                           @method('patch')
