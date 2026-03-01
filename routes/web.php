@@ -27,6 +27,14 @@ Route::middleware(['www'])->group(function () {
         return redirect(route('login'));
     })->name('welcome');
 
+    Route::get('/privacy-policy', function () {
+        return view('privacyPolicy');
+    });
+  
+  	Route::get('/data-deletion-information', function () {
+        return view('dataDeletionInformation');
+    });
+
     Route::get('/pro-register', [RegisterController::class, 'showProRegistrationForm'])->name('pro-register');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
