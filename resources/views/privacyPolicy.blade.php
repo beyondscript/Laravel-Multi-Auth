@@ -8,17 +8,27 @@
 
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+  
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar/css/perfect-scrollbar.css" />
 
     <title>{{ config('app.name') }}</title>
 
     <style>
+      	html {
+          	height: 100%;
+          	overflow: hidden;
+      	}
+      
         body {
+          	height: 100%;
             font-family: Arial, sans-serif;
             line-height: 1.7;
             margin: 0;
             padding: 0;
             background: #f4f6f9;
             color: #333;
+          	position: relative;
+    		overflow: hidden;
         }
 
         .container {
@@ -59,78 +69,96 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 style="text-align: center;">Privacy Policy</h1>
+  	<div style="display: flex; justify-content: center;">
+        <div class="container" style="margin-left: 10px; margin-right: 10px;">
+            <h1 style="text-align: center;">Privacy Policy</h1>
 
-        <p style="text-align: center;">
-            This privacy policy explains how we collect, use and protect your information when you use our web application.
-        </p>
+            <p style="text-align: center;">
+                This privacy policy explains how we collect, use and protect your information when you use our web application.
+            </p>
 
-        <h2>1. Information We Collect</h2>
+            <h2>1. Information We Collect</h2>
 
-        <p>We may collect the following information:</p>
+            <p>We may collect the following information:</p>
 
-        <ul>
-            <li>Name and email address</li>
-            <li>Login credentials (encrypted)</li>
-            <li>IP address and browser information</li>
-            <li>Account role (e.g. User, Admin)</li>
-            <li>Any data you submit within the application</li>
-        </ul>
+            <ul>
+                <li>Name and email address</li>
+                <li>Login credentials (encrypted)</li>
+                <li>IP address and browser information</li>
+                <li>Account role (e.g. User, Admin)</li>
+                <li>Any data you submit within the application</li>
+            </ul>
 
-        <h2>2. How We Use Your Information</h2>
+            <h2>2. How We Use Your Information</h2>
 
-        <ul>
-            <li>To create and manage your account</li>
-            <li>To authenticate users securely (multi-auth system)</li>
-            <li>To improve system functionality and performance</li>
-            <li>To provide customer support</li>
-            <li>To ensure security and prevent unauthorized access</li>
-        </ul>
+            <ul>
+                <li>To create and manage your account</li>
+                <li>To authenticate users securely (multi-auth system)</li>
+                <li>To improve system functionality and performance</li>
+                <li>To provide customer support</li>
+                <li>To ensure security and prevent unauthorized access</li>
+            </ul>
 
-        <h2>3. Data Protection</h2>
+            <h2>3. Data Protection</h2>
 
-        <p>
-            We implement appropriate security measures to protect your personal information. Passwords are encrypted using secure hashing algorithms. Access to administrative areas is restricted based on user roles.
-        </p>
+            <p>
+                We implement appropriate security measures to protect your personal information. Passwords are encrypted using secure hashing algorithms. Access to administrative areas is restricted based on user roles.
+            </p>
 
-        <h2>4. Cookies</h2>
+            <h2>4. Cookies</h2>
 
-        <p>
-            Our application may use cookies to maintain login sessions and improve user experience. You may disable cookies in your browser settings but some features may not function properly.
-        </p>
+            <p>
+                Our application may use cookies to maintain login sessions and improve user experience. You may disable cookies in your browser settings but some features may not function properly.
+            </p>
 
-        <h2>5. Third-Party Services</h2>
+            <h2>5. Third-Party Services</h2>
 
-        <p>
-            We may use trusted third-party services (such as hosting providers or analytics tools) to operate our application. These services have their own privacy policies.
-        </p>
+            <p>
+                We may use trusted third-party services (such as hosting providers or analytics tools) to operate our application. These services have their own privacy policies.
+            </p>
 
-        <h2>6. Data Retention</h2>
+            <h2>6. Data Retention</h2>
 
-        <p>
-            We retain your information as long as your account is active or as necessary to comply with legal obligations.
-        </p>
+            <p>
+                We retain your information as long as your account is active or as necessary to comply with legal obligations.
+            </p>
 
-        <h2>7. Your Rights</h2>
+            <h2>7. Your Rights</h2>
 
-        <p>You may request to:</p>
+            <p>You may request to:</p>
 
-        <ul>
-            <li>Access your personal data</li>
-            <li>Update or correct your information</li>
-            <li>Delete your account</li>
-        </ul>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Update or correct your information</li>
+                <li>Delete your account</li>
+            </ul>
 
-        <h2>8. Changes To This Policy</h2>
+            <h2>8. Changes To This Policy</h2>
 
-        <p>
-            We may update this privacy policy from time to time. Changes will be posted on this page.
-        </p>
+            <p>
+                We may update this privacy policy from time to time. Changes will be posted on this page.
+            </p>
 
-        <div class="footer" style="text-align: center;">
-            ©{{ now()->year }} All rights reserved | {{ config('app.name') }}
+            <div class="footer" style="text-align: center;">
+                ©{{ now()->year }} All rights reserved | {{ config('app.name') }}
+            </div>
         </div>
-    </div>
+  	</div>
+  
+  	<script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  
+  	<script>
+    	var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+    	if(!isWindows){
+      		document.getElementsByTagName('html')[0].style.overflow = 'auto'
+      		document.getElementById('sidenav-main').style.overflow = 'auto'
+    	}
+      	else{
+          	const psBody = new PerfectScrollbar(document.body, {
+                wheelSpeed: 1,
+                wheelPropagation: true,
+            });
+        }
+  	</script>
 </body>
 </html>
