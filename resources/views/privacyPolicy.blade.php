@@ -151,6 +151,7 @@
     	var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
     	if(!isWindows){
       		document.getElementsByTagName('html')[0].style.overflow = 'auto'
+            document.body.style.overflow = 'auto'
       		document.getElementById('sidenav-main').style.overflow = 'auto'
     	}
       	else{
