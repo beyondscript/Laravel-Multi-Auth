@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   @vite('public/assets/css/dropify.min.css')
+
+  @yield('style')
 </head>
 
   @yield('content')
