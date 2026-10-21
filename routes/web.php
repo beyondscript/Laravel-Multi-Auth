@@ -22,7 +22,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::middleware(['www'])->group(function () {
+Route::group(function () {
     Route::get('/', function () {
         return redirect(route('login'));
     })->name('welcome');
@@ -70,7 +70,7 @@ Route::middleware(['www'])->group(function () {
     Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false, 'logout' => false]);
 });
 
-Route::middleware(['www', 'auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin-home', [HomeController::class, 'admin_index'])->name('admin.home');
         Route::get('/admin-profile', [ProfileController::class, 'admin_profile'])->name('admin.profile');
@@ -110,6 +110,6 @@ Route::middleware(['www', 'auth', 'verified'])->group(function () {
     Route::patch('/{type_profile}/remove-google-account', [SocialiteController::class, 'googleremove'])->name('google_remove');
 });
 
-Route::middleware(['www', 'auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
