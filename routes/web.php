@@ -22,7 +22,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::group(function () {
+Route::group([], function () {
     Route::get('/', function () {
         return redirect(route('login'));
     })->name('welcome');
