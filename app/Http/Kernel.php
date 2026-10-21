@@ -66,6 +66,5 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\CheckAdmin::class,
         'user' => \App\Http\Middleware\CheckUser::class,
         'pro' => \App\Http\Middleware\CheckPro::class,
-        'www' => \App\Http\Middleware\RedirectNonWww::class,
     ];
 }
