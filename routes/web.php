@@ -55,9 +55,6 @@ Route::group([], function () {
     Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('reset-password-with-token', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-    Route::get('confirm-password', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-    Route::post('confirm-password', [ConfirmPasswordController::class, 'confirm']);
-
     Route::patch('/auth/facebook-redirect', [SocialiteController::class, 'facebookredirect'])->name('facebook_login');
     Route::get('/auth/facebook-callback', [SocialiteController::class, 'facebookcallback']);
 
