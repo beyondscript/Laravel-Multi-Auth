@@ -93,8 +93,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/pro-profile/edit-profile-picture', [ProfileController::class, 'pro_edit_picture'])->name('pro.edit.picture');
     });
 
-    Route::patch('/{type_profile}/update-email', [ProfileController::class, 'update_email'])->name('update.email');
-    Route::patch('/{type_profile}/update-password', [ProfileController::class, 'update_password'])->name('update.password');
+    Route::patch('/{type_profile}/update-email', [ProfileController::class, 'update_email'])->middleware('throttle:6,1')->name('update.email');
+    Route::patch('/{type_profile}/update-password', [ProfileController::class, 'update_password'])->middleware('throttle:6,1')->name('update.password');
     Route::patch('/{type_profile}/update-picture', [ProfileController::class, 'update_picture'])->name('update.picture');
 
     Route::patch('/{type_profile}/connect-facebook-account', [SocialiteController::class, 'facebookredirect'])->name('facebook_connect');
